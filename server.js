@@ -8,6 +8,15 @@ app.use(express.json());
 
 app.use("/api/tasks", taskRoutes);
 
+
+// API health-check / welcome endpoint
+app.get("/", (req, res) => {
+  res.send({
+    message: "Food delivery server is running HOT!",
+    author: "Shahadat Hossain"
+  });
+});
+
 // Basic error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
